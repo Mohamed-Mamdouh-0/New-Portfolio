@@ -1,0 +1,32 @@
+.intro-text {
+	font-size: 12px;
+}
+.home-container {
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - 56px);
+	background-color: #111827;
+	padding: 7% 6% 0px 7%;
+	color: white;
+}
+.home-firstSentence {
+	font-size: 22px;
+	text-align: left;
+}
+.home-secondSentence {
+	font-size: 52px;
+	text-align: left;
+	font-weight: Bold;
+}
+.home-thirdSentence {
+	font-size: 32px;
+	text-align: left;
+}
+.home-fourthSentence {
+	font-size: 17px;
+	text-align: left;
+	max-width: 450px;
+}
+.multiColourText {
+	color: black;
+}
