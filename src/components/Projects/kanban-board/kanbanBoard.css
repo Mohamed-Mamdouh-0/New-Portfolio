@@ -8,6 +8,8 @@
 	flex: 1;
 	padding-bottom: 4%;
 	padding-inline: 1%;
+	max-width: 100vw;
+	overflow: auto;
 }
 .column-container {
 	display: flex;
@@ -18,9 +20,10 @@
 	margin: 8px;
 }
 .Header-container {
-	display: flex;
+	/* display: flex; */
 	min-height: 10%;
-
+	flex-grow: 10;
+	width: 100%;
 	padding: 2%;
 	justify-content: space-between;
 }

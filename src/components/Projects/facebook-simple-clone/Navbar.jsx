@@ -46,7 +46,7 @@ function Navbar() {
 		<AppBar position='sticky' sx={{ zIndex: 1 }}>
 			<StyledToolbar>
 				<Typography variant='h6' sx={{ display: { xs: 'none', sm: 'block' } }}>
-					Douhaaa
+					Facebook
 				</Typography>
 				<Pets sx={{ display: { xs: 'block', sm: 'none' } }} />
 				<Search>
