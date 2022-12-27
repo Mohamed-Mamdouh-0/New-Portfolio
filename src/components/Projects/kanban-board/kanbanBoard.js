@@ -11,10 +11,12 @@ function KanbanBoard() {
 		{
 			id: uuid(),
 			content: 'first task',
+			text: '',
 		},
 		{
 			id: uuid(),
 			content: 'second task',
+			text: '',
 		},
 	]);
 
@@ -80,6 +82,7 @@ function KanbanBoard() {
 		copiedItems.push({
 			id: uuid(),
 			content: 'New task',
+			text: '',
 		});
 		setColumns({
 			...columns,
@@ -105,8 +108,43 @@ function KanbanBoard() {
 		const currColumns = columns;
 		delete currColumns[id];
 		console.log(currColumns);
+		setColumns({ ...currColumns });
 	};
 	// console.log(columns, columnItems);
+	const onChangeDescription = (columnId, itemId, text) => {
+		const column = columns[columnId];
+		let copiedItems = [...column.items];
+		let item = copiedItems.filter((item) => item.id === itemId);
+		const oldItems = copiedItems.filter((item) => item.id !== itemId);
+
+		item[0].text = text;
+		const newItems = [...oldItems, item[0]];
+
+		setColumns({
+			...columns,
+			[columnId]: {
+				...column,
+				items: newItems,
+			},
+		});
+	};
+	const onChangeTaskTitle = (columnId, itemId, text) => {
+		const column = columns[columnId];
+		let copiedItems = [...column.items];
+		let item = copiedItems.filter((item) => item.id === itemId);
+		const oldItems = copiedItems.filter((item) => item.id !== itemId);
+
+		item[0].content = text;
+		const newItems = [...oldItems, item[0]];
+
+		setColumns({
+			...columns,
+			[columnId]: {
+				...column,
+				items: newItems,
+			},
+		});
+	};
 
 	return (
 		<div className='page-container'>
@@ -121,11 +159,11 @@ function KanbanBoard() {
 					onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
 					{Object.entries(columns).map(([id, column]) => {
 						return (
-							<div
-								className='column-container'
-								key={id}
-								onClick={() => deleteColumn(id)}>
-								<ColumnHeader columnTitle={column.name} />
+							<div className='column-container' key={id}>
+								<ColumnHeader
+									columnTitle={column.name}
+									deleteColumn={() => deleteColumn(id)}
+								/>
 								<div className='column-wrapper'>
 									<Droppable droppableId={id} key={id}>
 										{(provided, snapshot) => {
@@ -166,6 +204,14 @@ function KanbanBoard() {
 																			}}>
 																			<TaskCard
 																				content={item.content}
+																				columnId={id}
+																				itemId={item.id}
+																				text={item.text}
+																				title={item.content}
+																				onChangeDescription={
+																					onChangeDescription
+																				}
+																				onChangeTaskTitle={onChangeTaskTitle}
 																				deleteItem={() =>
 																					deleteItem(id, item.id)
 																				}

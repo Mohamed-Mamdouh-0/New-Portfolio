@@ -8,18 +8,25 @@ import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import TextField from '@mui/material/TextField';
 
 function TaskCard(props) {
-	const [title, setTitle] = useState(props.content);
 	const [isFocused, setIsFocused] = useState(true);
-	const [description, setDescription] = useState('');
+	console.log(props.text);
+	const [description, setDescription] = useState(props.text ? props.text : '');
 	const onChange = (e) => {
 		setDescription(e.target.value);
+		props.onChangeDescription(props.columnId, props.itemId, e.target.value);
 	};
 	return (
 		<Box className='task-container' sx={{ minHeight: isFocused ? 150 : 50 }}>
 			<div className='task-header'>
 				<Input
-					value={title}
-					onChange={(e) => setTitle(e.target.value)}
+					value={props.title}
+					onChange={(e) =>
+						props.onChangeTaskTitle(
+							props.columnId,
+							props.itemId,
+							e.target.value
+						)
+					}
 					fullWidth
 					sx={{ paddingLeft: '5px' }}
 				/>
@@ -36,7 +43,7 @@ function TaskCard(props) {
 				<Input
 					// id='outlined-textarea'
 					className='task-description'
-					value={description}
+					value={props.text}
 					onChange={(e) => onChange(e)}
 					fullWidth
 					placeholder='Click to add description...'
