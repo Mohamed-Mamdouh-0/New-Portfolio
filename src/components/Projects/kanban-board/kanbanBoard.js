@@ -154,7 +154,7 @@ function KanbanBoard() {
 				items={columnItems}
 				columns={columns}
 			/>
-			<div className='d-flex flex-row'>
+			<div className='d-flex flex-row overflow-auto'>
 				<DragDropContext
 					onDragEnd={(result) => onDragEnd(result, columns, setColumns)}>
 					{Object.entries(columns).map(([id, column]) => {

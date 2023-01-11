@@ -26,6 +26,9 @@ function NavbarComponent() {
 							<NavDropdown.Item href='https://mohamed-recipe-project.netlify.app/'>
 								Cooking Recipe
 							</NavDropdown.Item>
+							<NavDropdown.Item href='https://mohamed-mamdouh-netflix-clone.netlify.app/'>
+								Netflix clone
+							</NavDropdown.Item>
 							{/* <NavDropdown.Divider />
 							<NavDropdown.Item href='#action/3.4'>
 								Separated link
