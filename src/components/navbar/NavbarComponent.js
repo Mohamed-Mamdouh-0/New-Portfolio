@@ -29,6 +29,9 @@ function NavbarComponent() {
 							<NavDropdown.Item href='https://mohamed-mamdouh-netflix-clone.netlify.app/'>
 								Netflix clone
 							</NavDropdown.Item>
+							<NavDropdown.Item href='https://e-commerce-sanity-woad.vercel.app/'>
+								E-Commerce using Sanity CMS
+							</NavDropdown.Item>
 							{/* <NavDropdown.Divider />
 							<NavDropdown.Item href='#action/3.4'>
 								Separated link
